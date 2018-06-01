@@ -10,6 +10,7 @@ public class Mario {
 		// Surprise!  This part is done for you.
 		//    Don't change this and don't ask for any other inputs
 		//      or testing will fail
+		//
 		ArgsProcessor ap = new ArgsProcessor(args);
 		int size    = ap.nextInt("What size mountain do you want?");
 		int pattern = ap.nextInt("What pattern (1, 2, 3, or 4)?");
