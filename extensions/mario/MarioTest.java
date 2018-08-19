@@ -50,6 +50,7 @@ public class MarioTest {
 			String testcase = "";
 			int pattern = 0;
 			int size    = 0;
+			boolean gotInput = false;
 			while (line != null) {
 				//
 				// Collected a pattern?  Test it
@@ -88,10 +89,14 @@ public class MarioTest {
 				// end of pattern
 				//
 				else if (line.startsWith("<=====")) {
+					if (!gotInput)
+						fail("Your code failed to produce any output");
 					collecting = false;
+					gotInput   = false;
 				}
 				else {
 					testcase = testcase + line + "\n";
+					gotInput = true;
 				}
 				line = br.readLine();
 			}
