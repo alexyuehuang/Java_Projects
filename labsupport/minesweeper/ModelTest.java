@@ -1,4 +1,4 @@
-package minesweeper.test;
+package minesweeper;
 
 import minesweeper.Model;
 
