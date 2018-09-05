@@ -1,0 +1,11 @@
+Greetings from your synthetically friendly robotic CSE131 grader!
+Report prepared at Wed Sep  5 11:39:45 CDT 2018
+To count, your work must have been done by 2018-09-06T12:00:00+00:00
+
+Exercise report:
+
+Counts?	Exercise
+Yes	Change.java
+
+-------------
+Score:   100%
