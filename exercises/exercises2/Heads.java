@@ -7,7 +7,9 @@ public class Heads {
 	public static void main(String[] args) {
 
 		// what are the concepts?
-		for (int a = 0; a <100; ++a) {
+		ArgsProcessor ap = new ArgsProcessor(args);
+		int n = ap.nextInt("How many runs?");
+		for (int a = 0; a <n; ++a) {
 		int numHeads = 0;
 		int numFlips = 0;
 		// now flip a coin until we see 10 heads
