@@ -40,8 +40,8 @@ public class Ruin {
 			else {
 				status = "WIN";
 			}
-			System.out.println("Simulation "+ i + ": " + count + " rounds		" + status);
-		}
+			System.out.println("Simulation "+ i + ": " + count + " rounds	 	" + status);
+		} 
 		double ruinRate = (double)lossTimes/(double)(i-1);
 		System.out.println("\n" + "Losses: " + lossTimes + " Simulations: " + (i-1) + "\n" + "Actural Ruin Rate: " + ruinRate + "    Expected Ruin Rate: " + ruin);
 	}
