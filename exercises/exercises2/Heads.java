@@ -9,6 +9,7 @@ public class Heads {
 		// what are the concepts?
 		ArgsProcessor ap = new ArgsProcessor(args);
 		int n = ap.nextInt("How many runs?");
+		double sug = 0;
 		for (int a = 0; a <n; ++a) {
 		int numHeads = 0;
 		int numFlips = 0;
@@ -19,10 +20,11 @@ public class Heads {
 				numHeads = numHeads + 1;
 			}
 			numFlips = numFlips + 1;
-
 		}
+		sug = sug + numFlips;
 			System.out.println("The number of flips was " + numFlips);
 	}
+		System.out.println("the average is " + (sug/n));
 	}
 		// here, numHeads should be 10
 		
