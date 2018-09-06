@@ -11,8 +11,16 @@ public class CarefulDivide {
 
 		// Compute numerator / denominator
 		//  as an int result
+
 		// BUT if the division has the denominator
 		//   as zero, print some error message
+		if (denominator==0) {
+			System.out.println("Oops, the denominator cannot be zero");
+		}
+		else {
+			int result = numerator/denominator;
+			System.out.println(result);
+		}
 		//   instead of the quotient
 		// Otherwise, print the quotient
 		//

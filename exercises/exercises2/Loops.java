@@ -43,18 +43,46 @@ public class Loops {
 		
 		// 0 to 9 inclusively
 		//    produces  0 1 2 3 4 5 6 7 8 9
-		
-		
+		int i = 0;
+		double a = 0;
+		while (a <= 9){
+			a=a+1;
+			System.out.print(i + " ");
+			i = i+1;
+		}
 		// 1 to 10 inclusively
 		//    produces 1 2 3 4 5 6 7 8 9 10
-		
-		
+		int q = 0 ;
+		double b = 0;
+		while (b < 22) {
+			b = b + 2;
+			System.out.print(q + " ");
+			q = q + 1;
+		}
 		// 0 to 10, including 0, excluding 10
 		//    produces 0 1 2 3 4 5 6 7 8 9
-		
+		int k = 0;
+		int x = 0;
+		while (k < 30) {
+			k = k + 3;
+			System.out.print(x + " ");
+			x = x + 1;
+		}
 		
 		// like the one above, but jumping by 2
 		//    produces 0 2 4 6 8
+		int t = 0;
+		int m = 0;
+		while (t < 5) {
+			t = t + 1;
+			System.out.print(m + " ");
+			m = m + 2;
+		}
+	}
+
+	private static Object a(int i) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

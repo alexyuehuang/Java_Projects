@@ -1,13 +1,19 @@
 package exercises2;
 
+import cse131.ArgsProcessor;
+
 public class Max {
 
 	public static void main(String[] args) {
-		//
-		// Below, prompt the user for two ints, x and y
-		//
-		
-		
+		ArgsProcessor ap = new ArgsProcessor(args);
+		int x = ap.nextInt("what is x?");
+		int y = ap.nextInt("what is y?");
+		if (x>y) {
+			System.out.println(x);
+		}
+		else {
+			System.out.println(y);
+		}
 		
 		
 		//

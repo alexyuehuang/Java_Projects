@@ -10,11 +10,18 @@ public class CoinFlip {
 		// heads or tails,
 		// each with probability 0.5
 		//
+		double a = Math.random();
+		if (a<0.5) {
+			System.out.println("Heads");
 		// This program does not prompt the user
 		//   for any input.  It simply prints
 		// heads or tails
 		//
 
-	}
+		}
+		else {
+			System.out.println("tails");
+		}
+		}
 
 }

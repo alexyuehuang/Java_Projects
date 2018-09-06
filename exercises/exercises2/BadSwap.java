@@ -25,8 +25,8 @@ public class BadSwap {
 		//   Note that the bad swap executes only if x>y
 		//
 		// Your answer:
-		//
-		//
+		//in line 14 we gave the value of y to x, so now x no longer possess its original value
+		//thus when we try to swap in line 15, we are simply giving the value of y to y, which is not what we intended
 		//
 		//
 		//
