@@ -1,5 +1,5 @@
-Greetings from your synthetically friendly robotic CSE131 grader!
-Report prepared at Wed Sep  5 11:39:45 CDT 2018
+I am your robotic CSE131 grader, and I provide the following report for your edification.
+Report prepared at Sat Sep  8 09:05:47 CDT 2018
 To count, your work must have been done by 2018-09-06T12:00:00+00:00
 
 Exercise report:
