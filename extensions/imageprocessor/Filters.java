@@ -13,6 +13,7 @@ import java.util.Random;
 
 
 public class Filters {
+	//1
 	// Some sample methods:
 
 	// This method cuts each color component of a pixel in half to produce the new image.
