@@ -68,12 +68,18 @@ public class FindComprehensiveTest {
 		}
 
 		Random random = new Random();
-		for (int iteration = 0; iteration < 100; iteration++) {
-			List<String> strings = StringTestUtils.createUniqueStringList(random,
-					() -> StringTestUtils.nextRandomString(random, 4), 5);
-			for (int fromIndex = 0; fromIndex < strings.size(); fromIndex++) {
-				result.add(new Object[] { strings, fromIndex, IntStream.range(fromIndex, strings.size())
-						.reduce((i, j) -> strings.get(i).compareTo(strings.get(j)) < 0 ? i : j).getAsInt() });
+		final int STRING_LENGTH = 3;
+		for (int[] configs : new int[][] { { 5, 4 }, { 10, 7 } }) {
+			int iterationCount = configs[0];
+			int arrayLength = configs[1];
+
+			for (int iteration = 0; iteration < iterationCount; iteration++) {
+				List<String> strings = StringTestUtils.createUniqueStringList(random,
+						() -> StringTestUtils.nextRandomString(random, STRING_LENGTH), arrayLength);
+				for (int fromIndex = 0; fromIndex < strings.size(); fromIndex++) {
+					result.add(new Object[] { strings, fromIndex, IntStream.range(fromIndex, strings.size())
+							.reduce((i, j) -> strings.get(i).compareTo(strings.get(j)) < 0 ? i : j).getAsInt() });
+				}
 			}
 		}
 		return result;

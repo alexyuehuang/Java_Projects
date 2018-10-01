@@ -53,8 +53,7 @@ public class SelectionSortComprehensiveTest {
 		Random random = new Random();
 
 		final int STRING_LENGTH = 3;
-
-		for (int[] configs : new int[][] { { 10, 4 }, { 131, 7 } }) {
+		for (int[] configs : new int[][] { { 5, 4 }, { 10, 7 } }) {
 			int iterationCount = configs[0];
 			int arrayLength = configs[1];
 			for (int i = 0; i < iterationCount; i++) {

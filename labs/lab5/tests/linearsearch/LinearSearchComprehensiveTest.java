@@ -95,17 +95,21 @@ public class LinearSearchComprehensiveTest {
 		result.add(new Object[] { StringTestUtils.createStringList("C", "D", "A", "B", "A", "B", "A"), "B", 3 });
 
 		Random random = new Random();
-		for (int i = 0; i < 16; i++) {
-			int numStrings = 8;
-			List<String> strings = StringTestUtils.createUniqueStringList(random,
-					() -> StringTestUtils.nextRandomString(random, 4), numStrings);
-			String missingKey = strings.remove(strings.size() - 1);
-			int expectedIndex = 0;
-			for (String key : strings) {
-				result.add(new Object[] { strings, key, expectedIndex });
-				expectedIndex++;
+		final int STRING_LENGTH = 3;
+		for (int[] configs : new int[][] { { 5, 4 }, { 10, 7 } }) {
+			int iterationCount = configs[0];
+			int arrayLength = configs[1];
+			for (int i = 0; i < iterationCount; i++) {
+				List<String> strings = StringTestUtils.createUniqueStringList(random,
+						() -> StringTestUtils.nextRandomString(random, STRING_LENGTH), arrayLength);
+				String missingKey = strings.remove(strings.size() - 1);
+				int expectedIndex = 0;
+				for (String key : strings) {
+					result.add(new Object[] { strings, key, expectedIndex });
+					expectedIndex++;
+				}
+				result.add(new Object[] { strings, missingKey, -1 });
 			}
-			result.add(new Object[] { strings, missingKey, -1 });
 		}
 
 		return result;

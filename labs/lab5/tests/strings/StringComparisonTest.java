@@ -90,13 +90,13 @@ public class StringComparisonTest {
 
 		Random random = new Random();
 		for (int len = 1; len < 5; len++) {
-			for (int lcv = 0; lcv < 8; lcv++) {
+			for (int lcv = 0; lcv < 4; lcv++) {
 				String s = StringTestUtils.nextRandomString(random, len);
 				result.add(new Object[] { s, s, CompareResult.EQUALS });
 			}
 		}
 
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < 8; i++) {
 			String a = StringTestUtils.nextRandomString(random, random.nextInt(3) + 2);
 			String b = StringTestUtils.nextRandomString(random, random.nextInt(3) + 2);
 
