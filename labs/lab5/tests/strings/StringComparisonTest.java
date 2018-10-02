@@ -22,9 +22,9 @@ import lab5.tests.utils.UnitTestUtils;
 /**
  * @author Dennis Cosgrove (http://www.cse.wustl.edu/~cosgroved/)
  * 
- *         {@link Strings#isLexicographicallyBefore(String, String)}
+ *         {@link Strings#isLessThan(String, String)}
  *         {@link Strings#equals(String, String)}
- *         {@link Strings#isLexicographicallyAfter(String, String)}
+ *         {@link Strings#isGreaterThan(String, String)}
  */
 @RunWith(Parameterized.class)
 public class StringComparisonTest {
@@ -42,9 +42,9 @@ public class StringComparisonTest {
 	public TestRule timeout = UnitTestUtils.createTimeoutRule();
 
 	@Test
-	public void testAlphabeticallyBefore() {
-		boolean actual = Strings.isLexicographicallyBefore(a, b);
-		if (expected.isExpectedBefore()) {
+	public void testAlphabeticallyLessThan() {
+		boolean actual = Strings.isLessThan(a, b);
+		if (expected.isExpectedLessThan()) {
 			assertTrue(actual);
 		} else {
 			assertFalse(actual);
@@ -62,9 +62,9 @@ public class StringComparisonTest {
 	}
 
 	@Test
-	public void testAlphabeticallyAfter() {
-		boolean actual = Strings.isLexicographicallyAfter(a, b);
-		if (expected.isExpectedAfter()) {
+	public void testAlphabeticallyGreaterThan() {
+		boolean actual = Strings.isGreaterThan(a, b);
+		if (expected.isExpectedGreaterThan()) {
 			assertTrue(actual);
 		} else {
 			assertFalse(actual);
@@ -76,17 +76,17 @@ public class StringComparisonTest {
 		List<Object[]> result = new LinkedList<>();
 		result.add(new Object[] { "", "", CompareResult.EQUALS });
 
-		result.add(new Object[] { "A", "B", CompareResult.BEFORE });
+		result.add(new Object[] { "A", "B", CompareResult.LESS_THAN });
 		result.add(new Object[] { "A", "A", CompareResult.EQUALS });
-		result.add(new Object[] { "B", "A", CompareResult.AFTER });
+		result.add(new Object[] { "B", "A", CompareResult.GREATER_THAN });
 
-		result.add(new Object[] { "AAA", "AAB", CompareResult.BEFORE });
+		result.add(new Object[] { "AAA", "AAB", CompareResult.LESS_THAN });
 		result.add(new Object[] { "AAA", "AAA", CompareResult.EQUALS });
-		result.add(new Object[] { "AAB", "AAA", CompareResult.AFTER });
+		result.add(new Object[] { "AAB", "AAA", CompareResult.GREATER_THAN });
 
-		result.add(new Object[] { "AAAAA", "AABAA", CompareResult.BEFORE });
+		result.add(new Object[] { "AAAAA", "AABAA", CompareResult.LESS_THAN });
 		result.add(new Object[] { "AAAAA", "AAAAA", CompareResult.EQUALS });
-		result.add(new Object[] { "AABAA", "AAAAA", CompareResult.AFTER });
+		result.add(new Object[] { "AABAA", "AAAAA", CompareResult.GREATER_THAN });
 
 		Random random = new Random();
 		for (int len = 1; len < 5; len++) {
@@ -107,32 +107,32 @@ public class StringComparisonTest {
 	}
 
 	private static enum CompareResult {
-		BEFORE(true, false, false), EQUALS(false, true, false), AFTER(false, false, true);
-		private final boolean isExpectedBefore;
+		LESS_THAN(true, false, false), EQUALS(false, true, false), GREATER_THAN(false, false, true);
+		private final boolean isExpectedLessThan;
 		private final boolean isExpectedEquals;
-		private final boolean isExpectedAfter;
+		private final boolean isExpectedGreaterThan;
 
-		private CompareResult(boolean isExpectedBefore, boolean isExpectedEquals, boolean isExpectedAfter) {
-			this.isExpectedBefore = isExpectedBefore;
+		private CompareResult(boolean isExpectedLessThan, boolean isExpectedEquals, boolean isExpectedGreaterThan) {
+			this.isExpectedLessThan = isExpectedLessThan;
 			this.isExpectedEquals = isExpectedEquals;
-			this.isExpectedAfter = isExpectedAfter;
+			this.isExpectedGreaterThan = isExpectedGreaterThan;
 		}
 
-		public boolean isExpectedBefore() {
-			return isExpectedBefore;
+		public boolean isExpectedLessThan() {
+			return isExpectedLessThan;
 		}
 
 		public boolean isExpectedEquals() {
 			return isExpectedEquals;
 		}
 
-		public boolean isExpectedAfter() {
-			return isExpectedAfter;
+		public boolean isExpectedGreaterThan() {
+			return isExpectedGreaterThan;
 		}
 
 		public static CompareResult valueOf(String a, String b) {
 			int v = a.compareTo(b);
-			return v < 0 ? BEFORE : (v == 0) ? EQUALS : AFTER;
+			return v < 0 ? LESS_THAN : (v == 0) ? EQUALS : GREATER_THAN;
 		}
 	}
 }
