@@ -40,7 +40,7 @@ public class SelectionSortLargeArrayTest {
 	}
 
 	@Rule
-	public TestRule timeout = UnitTestUtils.createTimeoutRule(3);
+	public TestRule timeout = UnitTestUtils.createTimeoutRule();
 
 	@Test
 	public void test() {
