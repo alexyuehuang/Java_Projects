@@ -32,7 +32,7 @@ public class MergeCombinerComprehensiveTest {
 		this.aOriginal = StringTestUtils.toStringArray(aStrings);
 		this.bOriginal = StringTestUtils.toStringArray(bStrings);
 
-		this.expected = MergeCombinerTestUtils.createUninspiringlyCombinedArray(aOriginal, bOriginal);
+		this.expected = StringTestUtils.createUninspiringlyCombinedArray(aOriginal, bOriginal);
 	}
 
 	@Rule
@@ -43,11 +43,11 @@ public class MergeCombinerComprehensiveTest {
 		String[] a = Arrays.copyOf(aOriginal, aOriginal.length);
 		String[] b = Arrays.copyOf(bOriginal, bOriginal.length);
 		String[] actual = MergeCombiner.createMergeCombinedArray(a, b);
-		assertArrayEquals(MergeCombinerTestUtils.createMessage(expected, actual), expected, actual);
+		assertArrayEquals(StringTestUtils.createMessage(expected, actual), expected, actual);
 	}
 
 	@Parameters(name = "a: {0}; b: {1}")
 	public static Collection<Object[]> getConstructorArguments() {
-		return MergeCombinerTestUtils.createExtendedConstructorArguments();
+		return StringTestUtils.createExtendedConstructorArguments();
 	}
 }

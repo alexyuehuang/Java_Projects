@@ -6,6 +6,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
 
+import lab5.tests.utils.StringTestUtils;
 import lab5.tests.utils.UnitTestUtils;
 import studio5x.MergeCombiner;
 
@@ -27,6 +28,6 @@ public class DemonstrationVideoCompanionTest {
 		String[] b = { "B", "I", "S" };
 		String[] actual = MergeCombiner.createMergeCombinedArray(a, b);
 		String[] expected = { "B", "E", "G", "I", "N", "S" };
-		assertArrayEquals(MergeCombinerTestUtils.createMessage(expected, actual), expected, actual);
+		assertArrayEquals(StringTestUtils.createMessage(expected, actual), expected, actual);
 	}
 }

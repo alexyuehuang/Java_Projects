@@ -34,11 +34,11 @@ public class MergeCombinerLargeArrayTest {
 	public MergeCombinerLargeArrayTest(int aArrayLength, int bArrayLength) {
 		final int STRING_LENGTH = 5;
 		Random random = new Random();
-		this.aOriginal = StringTestUtils.toStringArray(StringTestUtils
-				.createUniqueSortedStringList(() -> StringTestUtils.nextRandomString(random, STRING_LENGTH), aArrayLength));
-		this.bOriginal = StringTestUtils.toStringArray(StringTestUtils
-				.createUniqueSortedStringList(() -> StringTestUtils.nextRandomString(random, STRING_LENGTH), bArrayLength));
-		this.expected = MergeCombinerTestUtils.createUninspiringlyCombinedArray(aOriginal, bOriginal);
+		this.aOriginal = StringTestUtils.toStringArray(StringTestUtils.createUniqueSortedStringList(
+				() -> StringTestUtils.nextRandomString(random, STRING_LENGTH), aArrayLength));
+		this.bOriginal = StringTestUtils.toStringArray(StringTestUtils.createUniqueSortedStringList(
+				() -> StringTestUtils.nextRandomString(random, STRING_LENGTH), bArrayLength));
+		this.expected = StringTestUtils.createUninspiringlyCombinedArray(aOriginal, bOriginal);
 	}
 
 	@Rule
@@ -49,7 +49,7 @@ public class MergeCombinerLargeArrayTest {
 		String[] a = Arrays.copyOf(aOriginal, aOriginal.length);
 		String[] b = Arrays.copyOf(bOriginal, bOriginal.length);
 		String[] actual = MergeCombiner.createMergeCombinedArray(a, b);
-		assertArrayEquals(MergeCombinerTestUtils.createMessage(expected, actual), expected, actual);
+		assertArrayEquals(StringTestUtils.createMessage(expected, actual), expected, actual);
 	}
 
 	@Parameters(name = "aArrayLength: {0}; bArrayLength: {1}")
@@ -59,6 +59,9 @@ public class MergeCombinerLargeArrayTest {
 		result.add(new Object[] { 131, 1853 });
 		result.add(new Object[] { 1853, 131 });
 		result.add(new Object[] { 1853, 1853 });
+		result.add(new Object[] { 112358, 131 });
+		result.add(new Object[] { 1853, 112358 });
+		result.add(new Object[] { 112358, 112358 });
 		return result;
 	}
 

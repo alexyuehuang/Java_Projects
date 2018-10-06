@@ -46,6 +46,6 @@ public class ArrayLengthTest {
 
 	@Parameters(name = "a: {0}; b: {1}")
 	public static Collection<Object[]> getConstructorArguments() {
-		return MergeCombinerTestUtils.createDefaultConstructorArguments();
+		return StringTestUtils.createDefaultConstructorArguments();
 	}
 }

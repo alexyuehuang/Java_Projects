@@ -44,13 +44,13 @@ public class NonMutationOfParametersTest {
 		String[] unused = MergeCombiner.createMergeCombinedArray(a, b);
 
 		assertArrayEquals("\nshould not mutate (that is: change the contents of) its parameters.\nparameter a:\n"
-				+ MergeCombinerTestUtils.createMessage(aOriginal, a), aOriginal, a);
+				+ StringTestUtils.createMessage(aOriginal, a), aOriginal, a);
 		assertArrayEquals("should not mutate (that is: change the contents of) its parameters.\nparameter b:\n"
-				+ MergeCombinerTestUtils.createMessage(aOriginal, a), bOriginal, b);
+				+ StringTestUtils.createMessage(aOriginal, a), bOriginal, b);
 	}
 
 	@Parameters(name = "a: {0}; b: {1}")
 	public static Collection<Object[]> getConstructorArguments() {
-		return MergeCombinerTestUtils.createDefaultConstructorArguments();
+		return StringTestUtils.createDefaultConstructorArguments();
 	}
 }
