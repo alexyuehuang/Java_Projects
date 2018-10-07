@@ -21,7 +21,7 @@ public class MergeCombinerPerformanceTimingChartApp extends PerformanceTimingCha
 	private static final int ARRAY_LENGTH_MULTIPLIER = 1_000;
 
 	public MergeCombinerPerformanceTimingChartApp() {
-		super("Merge vs Concat and Sort", "Merge Combiner", "Concat and Sort",
+		super("Concat Then Sort vs Merge", "Concat Then Sort", "Merge", 
 				"Array Length (x " + ARRAY_LENGTH_MULTIPLIER + ")", "Average Time (" + TIMING_ITERATIONS + " samples)",
 				1, 10, 1);
 	}
@@ -70,7 +70,7 @@ public class MergeCombinerPerformanceTimingChartApp extends PerformanceTimingCha
 			protected Void call() throws Exception {
 				Random random = new Random();
 
-				Timeline aTimeline = createAlertTimeline("MergeCombiner.createMergeCombinedArray");
+				Timeline bTimeline = createAlertTimeline("MergeCombiner.createMergeCombinedArray");
 
 				int min = (int) xAxis.getLowerBound();
 				int maxInclusive = (int) xAxis.getUpperBound();
@@ -82,12 +82,12 @@ public class MergeCombinerPerformanceTimingChartApp extends PerformanceTimingCha
 					String[] b = StringTestUtils.toStringArray(StringTestUtils.createUniqueSortedStringList(
 							() -> StringTestUtils.nextRandomString(random, STRING_LENGTH), arrayLength));
 
-					aTimeline.play();
-					double aTime = time(random, a, b, MergeCombiner::createMergeCombinedArray);
-					aTimeline.stop();
+					double aTime = time(random, a, b, MergeCombinerPerformanceTimingChartApp::concatAndSort);
 					updateLater(aSeries, n, aTime);
 
-					double bTime = time(random, a, b, MergeCombinerPerformanceTimingChartApp::concatAndSort);
+					bTimeline.play();
+					double bTime = time(random, a, b, MergeCombiner::createMergeCombinedArray);
+					bTimeline.stop();
 					updateLater(bSeries, n, bTime);
 				}
 				return null;
