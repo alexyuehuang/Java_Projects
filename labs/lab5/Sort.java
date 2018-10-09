@@ -19,8 +19,16 @@ public class Sort {
 	 * @return the index of the lexicographically earliest value
 	 */
 	public static int findIndexOfLexicographicallyEarliestValue(String[] array, int fromIndex) {
-		throw new NotYetImplementedException("delete this line of code and implement this method.");
-	}
+		String a = array[fromIndex];
+		int b=fromIndex;
+		for (int i = fromIndex; i<array.length; i++) {
+			if(Strings.isLessThan(array[i], a)) {
+				a =array[i];
+				b=i;
+			}
+		}
+		return b;
+		}
 
 	/**
 	 * Swaps the values in the specified array at aIndex and bIndex. This will
@@ -34,9 +42,13 @@ public class Sort {
 	 *               array[bIndex]
 	 * @param bIndex index whose value should be swapped with the value at
 	 *               array[aIndex]
+	 * @return 
 	 */
-	public static void swapValuesAtIndicesInPlace(String[] array, int aIndex, int bIndex) {
-		throw new NotYetImplementedException("delete this line of code and implement this method.");
+	public static String[] swapValuesAtIndicesInPlace(String[] array, int aIndex, int bIndex) {
+		String a = array[aIndex];
+		array[aIndex] = array[bIndex];
+		array[bIndex] =a;
+		return array;
 	}
 
 	/**
@@ -44,9 +56,13 @@ public class Sort {
 	 * necessarily mutate (that is: change the contents of) the specified array.
 	 * 
 	 * @param array the array to sort in place
+	 * @return 
 	 */
 	public static void selectionSortInPlace(String[] array) {
-		throw new NotYetImplementedException("delete this line of code and implement this method.");
+		for (int i =0; i<array.length; i++) {
+			int a =findIndexOfLexicographicallyEarliestValue(array, i);
+			swapValuesAtIndicesInPlace(array, i, a);
+		}
 	}
 
 	/**
@@ -59,7 +75,13 @@ public class Sort {
 	 * @param array the array to determine whether or not it is sorted
 	 * @return true if the array is sorted, otherwise false.
 	 */
-	public static boolean isSorted(String[] array) {
-		throw new NotYetImplementedException("delete this line of code and implement this method.");
+	public static boolean isSorted(String[] y) {
+		boolean k = true;
+		for (int i =0; i<y.length-1; i++) {
+			if(Strings.isGreaterThan(y[i], y[i+1])) {
+				k=false;
+			}
+		}
+		return k;
 	}
 }
