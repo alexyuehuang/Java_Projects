@@ -24,6 +24,28 @@ public class MergeCombiner {
 	 * @return a new array which contains the contents of both a and b, sorted.
 	 */
 	public static String[] createMergeCombinedArray(String[] a, String[] b) {
-		throw new NotYetImplementedException("delete this line of code and implement this method.");
+		String[] c = new String[a.length+b.length];
+		int x= 0;
+		int y= 0;
+		for (int i =0; i<a.length+b.length; i++) {
+			if (x>=a.length) {
+				c[i] = b[y];
+				y++;
+			}
+			else if (y>=b.length) {
+				c[i] = a[x];
+				x++;
+			}
+			else if (Strings.isGreaterThan(a[x], b[y]))
+			{
+				c[i] = b[y];
+				y++;
+			}
+			else {
+				c[i] = a[x];
+				x++;
+			}
+		}
+		return c;
 	}
 }
