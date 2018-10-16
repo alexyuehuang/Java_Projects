@@ -8,7 +8,12 @@ public class Add {
 	//   add(x,y) = add(x+1,y-1), otherwise
 	//
 	public static int add(int x, int y) {
-		return 0;  // FIXME
+		if (y<=0) {
+			return x; 
+		}
+		else {
+			return add(x+1,y-1);
+		}
 	}
 	
 	//
@@ -27,7 +32,7 @@ public class Add {
 		if (y >= 0)
 			return add(x,y);
 		else
-			return 0; // FIXME
+			return -(add(-x,-y));
 	}
 
 }
