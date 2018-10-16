@@ -11,6 +11,7 @@ public class AddTest {
 		assertEquals(0, Add.add(0, 0));
 		assertEquals(12, Add.add(10, 2));
 		assertEquals(26, Add.add(20, 6));
+		
 		assertEquals(25, Add.add(3, 22));
 		assertEquals(0, Add.addAny(0, 0));
 		assertEquals(12, Add.addAny(10, 2));
