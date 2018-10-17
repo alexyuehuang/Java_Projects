@@ -7,7 +7,6 @@ public static int sum(int n) {
 	}
 	else {
 		return sum(n-1)+n;
-		
 	}
 }
 }

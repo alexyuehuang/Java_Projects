@@ -8,7 +8,6 @@ public class SumTest {
 
 	@Test
 	public void test() {
-		
 		assertEquals(0, Sum.sum(0));
 		assertEquals(1, Sum.sum(1));
 		assertEquals(10, Sum.sum(4));

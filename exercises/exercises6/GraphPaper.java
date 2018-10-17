@@ -5,7 +5,6 @@ import java.awt.Color;
 import sedgewick.StdDraw;
 
 public class GraphPaper {
-	
 	/**
 	 * Process one layer of the graph paper
 	 * @param llx lower-left-hand corner x coordinate
