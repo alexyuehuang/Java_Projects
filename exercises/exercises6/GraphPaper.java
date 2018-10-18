@@ -1,3 +1,4 @@
+
 package exercises6;
 
 import java.awt.Color;

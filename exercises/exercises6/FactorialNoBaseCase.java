@@ -1,3 +1,4 @@
+
 package exercises6;
 
 public class FactorialNoBaseCase {
