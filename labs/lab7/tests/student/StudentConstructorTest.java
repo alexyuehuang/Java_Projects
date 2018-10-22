@@ -13,6 +13,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
 
+import cse131.ReflectionUtils;
 import lab5.tests.utils.UnitTestUtils;
 import lab7.Student;
 
@@ -33,13 +34,15 @@ public class StudentConstructorTest {
 		int id = 111111;
 		Student student = new Student(firstName, lastName, id);
 
-		Field firstNameField = student.getClass().getDeclaredField("firstName");
+		Field firstNameField = ReflectionUtils.getOneAndOnlyOneDeclaredFieldContainingIgnoringCase(student.getClass(),
+				"first");
 		assertSame(String.class, firstNameField.getType());
 
-		Field lastNameField = student.getClass().getDeclaredField("lastName");
+		Field lastNameField = ReflectionUtils.getOneAndOnlyOneDeclaredFieldContainingIgnoringCase(student.getClass(),
+				"last");
 		assertSame(String.class, lastNameField.getType());
 
-		Field idField = student.getClass().getDeclaredField("id");
+		Field idField = ReflectionUtils.getOneAndOnlyOneDeclaredFieldContainingIgnoringCase(student.getClass(), "id");
 		assertNotSame(Integer.class, idField.getType());
 		assertSame(Integer.TYPE, idField.getType());
 

@@ -13,6 +13,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
 
+import cse131.ReflectionUtils;
 import lab5.tests.utils.UnitTestUtils;
 import lab7.Student;
 
@@ -31,15 +32,18 @@ public class StudentGradeAndCreditTotalFieldsTest {
 		int id = 1;
 		Student student = new Student(firstName, lastName, id);
 
-		Field totalGradeQualityPointsField = student.getClass().getDeclaredField("totalGradeQualityPoints");
+		Field totalGradeQualityPointsField = ReflectionUtils
+				.getOneAndOnlyOneDeclaredFieldContainingIgnoringCase(student.getClass(), "quality", "point");
 		assertNotSame(Double.class, totalGradeQualityPointsField.getType());
 		assertSame(Double.TYPE, totalGradeQualityPointsField.getType());
 
-		Field totalAttemptedCreditsField = student.getClass().getDeclaredField("totalAttemptedCredits");
+		Field totalAttemptedCreditsField = ReflectionUtils
+				.getOneAndOnlyOneDeclaredFieldContainingIgnoringCase(student.getClass(), "attempt");
 		assertNotSame(Integer.class, totalAttemptedCreditsField.getType());
 		assertSame(Integer.TYPE, totalAttemptedCreditsField.getType());
 
-		Field totalPassingCreditsField = student.getClass().getDeclaredField("totalPassingCredits");
+		Field totalPassingCreditsField = ReflectionUtils
+				.getOneAndOnlyOneDeclaredFieldContainingIgnoringCase(student.getClass(), "pass");
 		assertNotSame(Integer.class, totalPassingCreditsField.getType());
 		assertSame(Integer.TYPE, totalPassingCreditsField.getType());
 

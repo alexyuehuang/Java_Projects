@@ -1,10 +1,8 @@
 package lab7.tests.course;
 
-import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.junit.Assert.assertEquals;
+import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
-import static org.junit.Assert.assertTrue;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -21,7 +19,6 @@ import org.junit.runners.Parameterized.Parameters;
 import lab5.tests.utils.UnitTestUtils;
 import lab7.Course;
 import lab7.Student;
-import lab7.tests.util.StudentCourseUtils;
 
 /**
  * @author Dennis Cosgrove (http://www.cse.wustl.edu/~cosgroved/)

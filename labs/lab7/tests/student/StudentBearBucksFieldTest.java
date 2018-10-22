@@ -13,6 +13,7 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TestRule;
 
+import cse131.ReflectionUtils;
 import lab5.tests.utils.UnitTestUtils;
 import lab7.Student;
 
@@ -31,7 +32,8 @@ public class StudentBearBucksFieldTest {
 		int id = 1;
 		Student student = new Student(firstName, lastName, id);
 
-		Field bearBucksBalanceField = student.getClass().getDeclaredField("bearBucksBalance");
+		Field bearBucksBalanceField =  ReflectionUtils
+				.getOneAndOnlyOneDeclaredFieldContainingIgnoringCase(student.getClass(), "bear", "buck", "balance");
 		assertNotSame(Double.class, bearBucksBalanceField.getType());
 		assertSame(Double.TYPE, bearBucksBalanceField.getType());
 
