@@ -10,10 +10,8 @@ public class MergeSort {
 	 * The specification for this method is equivalent to
 	 * {@link MergeCombiner#createMergeCombinedArray(String[], String[])}
 	 * 
-	 * @param a
-	 *            a sorted array
-	 * @param b
-	 *            another sorted array
+	 * @param a a sorted array
+	 * @param b another sorted array
 	 * @return a new array which contains the contents of both a and b, sorted.
 	 */
 	private static String[] mergeCombine(String[] a, String[] b) {
@@ -78,17 +76,22 @@ public class MergeSort {
 	 * This method must not mutate (that is: change the contents of) the specified
 	 * array, nor would it have any real reason to do so.
 	 * 
-	 * @param array
-	 *            an array
-	 * @param min
-	 *            the minimum index of the range (inclusive)
-	 * @param maxExclusive
-	 *            the maximum index of the range (exclusive)
+	 * @param array        an array
+	 * @param min          the minimum index of the range (inclusive)
+	 * @param maxExclusive the maximum index of the range (exclusive)
 	 * @return a sorted array of the subrange of contents in the specified array
 	 *         from [min, maxExclusive).
 	 */
 	public static String[] createSortedArrayInRange(String[] array, int min, int maxExclusive) {
-		throw new NotYetImplementedException("delete this line of code and implement this method.");
+		//basecase
+		if (maxExclusive-min<=1) {
+			return new String [] {array[min]};
+		}
+			//recursively call createSortedArrayInRange with two subarrays
+
+			
+			//return mergecombine
+			return mergeCombine(createSortedArrayInRange(array, min, min+(maxExclusive-min)/2), createSortedArrayInRange(array, min+(maxExclusive-min)/2, maxExclusive));
 	}
 
 	/**
@@ -101,8 +104,7 @@ public class MergeSort {
 	 * This method must not mutate (that is: change the contents of) the specified
 	 * array, nor would it have any real reason to do so.
 	 * 
-	 * @param array
-	 *            an array
+	 * @param array an array
 	 * @return a sorted copy of the array
 	 */
 	public static String[] createSortedArray(String[] array) {
