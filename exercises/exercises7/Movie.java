@@ -1,5 +1,6 @@
 package exercises7;
 
+
 public class Movie {
 	private double length;
 	private String name;

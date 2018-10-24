@@ -11,6 +11,7 @@ package exercises7;
  *         Other
  *
  */
+
 public class Person {
 	
 	private int height, age;
