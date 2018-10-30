@@ -14,7 +14,17 @@ public class UsingSet {
 		//      copied and pasted from 
 		//      your solution to UsingList)
 		//
-
+		Set<String> a = new HashSet<String>();
+		a.add("open mouth");
+		a.add("insert food");
+		a.add("chew");
+		a.add("chew");
+		a.add("swallow");
+		System.out.println(a);
+		a.add("digest");
+		System.out.println(a);
+		a.remove("digest");
+		System.out.println(a);
 	}
 
 }

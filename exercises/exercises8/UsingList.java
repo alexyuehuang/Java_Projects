@@ -9,7 +9,17 @@ public class UsingList {
 		//
 		// Your code goes here:
 		//
-
+		List<String> a = new LinkedList<String>();
+		a.add("open mouth");
+		a.add("insert food");
+		a.add("chew");
+		a.add("chew");
+		a.add("swallow");
+		System.out.println(a);
+		a.add("digest");
+		System.out.println(a);
+		a.remove("digest");
+		System.out.println(a);
 	}
 
 }
