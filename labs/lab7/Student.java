@@ -49,7 +49,7 @@ public class Student {
 	}
 	public double getTotalGradeQualityPoints() {
 		return totalGradeQualityPoints;
-	}
+	} 
 	public void setTotalGradeQualityPoints(double totalGradeQualityPoints) {
 		this.totalGradeQualityPoints = totalGradeQualityPoints;
 	}

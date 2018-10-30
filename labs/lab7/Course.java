@@ -4,7 +4,7 @@ public class Course {
 	private String name;
 	private int credits, capacity, seats;
 	private Student[] names;
-	/**
+	/** 
 	 * @param name
 	 * @param credits
 	 * @param capacity
