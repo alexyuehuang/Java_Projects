@@ -87,7 +87,7 @@ public class EmersynController extends JFrame {
 		lblSad_1.setBounds(76, 66, 61, 16);
 		contentPane.add(lblSad_1);
 		
-		JLabel lblMin = new JLabel("min");
+		JLabel lblMin = new JLabel("not surprised");
 		lblMin.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMin.setBounds(77, 107, 61, 16);
 		contentPane.add(lblMin);
@@ -97,7 +97,7 @@ public class EmersynController extends JFrame {
 		lblHappy.setBounds(351, 66, 61, 16);
 		contentPane.add(lblHappy);
 		
-		JLabel lblMax = new JLabel("max");
+		JLabel lblMax = new JLabel("surprised");
 		lblMax.setHorizontalAlignment(SwingConstants.CENTER);
 		lblMax.setBounds(351, 107, 61, 16);
 		contentPane.add(lblMax);

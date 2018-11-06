@@ -4,7 +4,7 @@ import cse131.ArgsProcessor;
 import sedgewick.StdAudio;
 import sedgewick.StdDraw;
 
-public class BumpingBalls {
+public class BumpingBalls { 
 	
 	public static void main(String[] args) {
 		ArgsProcessor ap = new ArgsProcessor(args);
