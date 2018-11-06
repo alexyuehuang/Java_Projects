@@ -36,13 +36,13 @@ public class String {
 //			}
 //		}
 		int q=0;
-		if('+'== d) {
+		if(d == '+') {
 			q=a+b;
 		}
-		if('*'== d) {
+		else if('*'== d) {
 			q=a*b;
 		}
-		if('-'== d) {
+		else if('-'== d) {
 			q=a-b;
 		}
 		else {
