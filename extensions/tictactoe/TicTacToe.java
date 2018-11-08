@@ -1,10 +1,10 @@
 package tictactoe;
 
 public class TicTacToe  {
-	
+
 	// avoids Javdoc entry: all methods for this work are static
 	private TicTacToe() {
-		
+
 	}
 
 	/**
@@ -12,7 +12,13 @@ public class TicTacToe  {
 	 * @return a 3x3 String[][] array with each element set to a single blank string (" ").
 	 */
 	public static String[][] genBoard() {
-		return null; // FIXME
+		String[][]a = new String [3][3];
+		for (int i=0; i<3; i++) {
+			for (int j=0; j<3;j++) {
+				a[i][j] = " ";
+			}
+		}
+		return a;
 	}
 
 	/**
@@ -34,7 +40,12 @@ public class TicTacToe  {
 	 * @param row should be between 0 and 2, inclusively
 	 */
 	public static void verifyValidRow(int row) {
-		throw new UnsupportedOperationException("You must implement this method");
+		if(row>=0&&row<3) {
+			return;
+		}
+		else {
+			throw new IllegalArgumentException("row must be 1 to 3, but was instead " +row);
+		}
 	}
 
 	/**
@@ -42,7 +53,12 @@ public class TicTacToe  {
 	 * @param col should be between 0 and 2, inclusively
 	 */
 	public static void verifyValidCol(int col) {
-		throw new UnsupportedOperationException("You must implement this method");
+		if(col>=0&&col<3) {
+			return;
+		}
+		else {
+			throw new IllegalArgumentException("row must be 1 to 3, but was instead " +col);
+		}
 	}
 
 
@@ -84,9 +100,13 @@ public class TicTacToe  {
 		verifyValidPlayer(player);
 		verifyValidRow(row);
 		verifyValidCol(col);
-		
-		
-		return false; // FIXME
+		if(board[row][col].equals(" ")){
+			board[row][col] =player;
+			return true;
+		}
+		else {
+			return false; // FIXME
+		}
 	}
 
 	/**
@@ -95,7 +115,22 @@ public class TicTacToe  {
 	 * @return true iff the board is full
 	 */
 	public static boolean boardFull(String[][] board) {
-		return true; // FIXME
+		int k=0;
+		for (int r=0; r < board.length; ++r) {
+			for (int c=0; c < board[r].length; ++c) {
+				if(board[r][c].equals(" ")) {
+				}
+				else {
+					k++;
+				}
+			}
+		}
+		if(k==9) {
+			return true; 
+		}
+		else {
+			return false;
+		}
 	}
 
 	/**
@@ -107,8 +142,22 @@ public class TicTacToe  {
 	 */
 	public static boolean winFor(String player, String[][] board) {
 		verifyValidPlayer(player);
-		
-		return true; // FIXME
+		boolean a = false;
+		for (int r=0; r < board.length; ++r) {
+			if(board[r][0].equals(board[r][1])&&board[r][1].equals(board[r][2])&&!board[r][1].equals(" ")) {
+				a = true;
+			}
+			if(board[0][r].equals(board[1][r])&&board[1][r].equals(board[2][r])&&!board[1][r].equals(" ")) {
+				a = true;
+			}
+			if(board[1][1].equals(board[2][2])&&board[0][0].equals(board[1][1])&&!board[1][1].equals(" ")) {
+				a = true;
+			}
+			if(board[1][1].equals(board[0][2])&&board[2][0].equals(board[1][1])&&!board[1][1].equals(" ")) {
+				a = true;
+			}
+		}
+		return a; // FIXME
 	}
 
 }
