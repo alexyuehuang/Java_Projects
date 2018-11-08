@@ -3,17 +3,41 @@ package lab3;
 import cse131.ArgsProcessor;
 
 public final class Dice_Simulation {
+	public static class Dice{
+		private int d, t;
 
-	public static void main(String[] args) {
-		ArgsProcessor ap = new ArgsProcessor(args);
-		int d = ap.nextInt("how many dice will be used?");
-		int t = ap.nextInt("how many times will the dice be thrown?");
+		/**
+		 * @param d
+		 * @param t
+		 */
+		public Dice(int d, int t) {
+			super();
+			this.d = d;
+			this.t = t;
+		}
+		
+		public int[][] getTable(){
 		int[][] table =new int[d][t];
 		for (int i = 0; i< d; i++) {
 			for (int j = 0; j<t; j++) {
 				table [i][j] = (int)(Math.random()*6)+1;
 			}
 		}
+		return table;
+		}
+		public void setD(int d) {
+			this.d = d;
+		}
+		
+	}
+
+	public static void main(String[] args) {
+		ArgsProcessor ap = new ArgsProcessor(args);
+		int d = ap.nextInt("how many dice will be used?");
+		int t = ap.nextInt("how many times will the dice be thrown?");
+		Dice a= new Dice(d, t);
+		int [][] table = new int [d][t];
+		table = a.getTable();
 		for (int i = 0; i< t; i++) {
 			for (int j = 0; j<d; j++) {
 				System.out.print(table [j][i]);
