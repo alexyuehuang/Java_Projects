@@ -21,9 +21,21 @@ public class PersianRug {
 			double llx, double lly,
 			double size, 
 			int north, int east, int south, int west) {
-		//
-		// FIXME Your code goes here
-		//
+		if(size<0.001) {
+			return;
+		}
+		else {
+			int c = (north+east+west+south+1)%11;
+			StdDraw.setPenColor(palette[c]);
+			StdDraw.line(llx+size/2, lly, llx+size/2, lly+size);
+			//StdDraw.setPenColor(palette[north]);
+			StdDraw.line(llx, lly+size/2, llx+size, lly+size/2);
+			persianRug(palette, llx, lly, size/2, c, c, south, west);
+			persianRug(palette, llx+size/2, lly, size/2, c, east, south, c);
+			persianRug(palette, llx, lly+size/2, size/2, north,c, c, west);
+			persianRug(palette, llx+size/2, lly+size/2, size/2, north, east, c, c);
+		}
+		
 	}
 
 	public static void main(String args[]) {
@@ -38,7 +50,7 @@ public class PersianRug {
 		//
 		//  Here is the line to uncomment:
 		//
-		//  StdDraw.show(10);   // don't forget to uncomment the other line at the end
+		  StdDraw.show(10);   // don't forget to uncomment the other line at the end
 		//
 		
 		
@@ -70,7 +82,7 @@ public class PersianRug {
 		// Also uncomment this line when you have things working
 		//   to speed up the drawing:
 		//
-		// StdDraw.show(10);
+		 StdDraw.show(10);
 		//
 	}
 

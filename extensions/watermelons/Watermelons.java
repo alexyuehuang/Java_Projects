@@ -3,7 +3,7 @@ package watermelons;
 import java.util.Arrays;
 
 public class Watermelons {
-	
+
 	/**
 	 * Computes the sum of each distinct pair of entries in the incoming array.
 	 * A given pair of entries has its sum computed only once.  So if you
@@ -15,10 +15,18 @@ public class Watermelons {
 	 * @return an array containing the sums of pairs as described above
 	 */
 	public static int[] allPairSums(int[] nums) {
-		int[] ans = new int[] { 0 };  // FIXME compute ans as the result you want
-		return ans;
+		int length = nums.length;
+		int[] d = new int[length*(length-1)/2];
+		int n=0;
+		for (int i=0;i<length; i++) {
+			for (int j=i+1;j<length; j++) {
+				d[n] = nums[i]+nums[j];
+				n++;
+			}
+		}
+		return d;
 	}
-	
+
 	/**
 	 * The method below must COMPUTE and return a solution as described
 	 * on the web page for this extension.  
@@ -32,9 +40,24 @@ public class Watermelons {
 	 * @return
 	 */
 	public static int[] getSolution(int[] pairSums) {
-		return new int[] { 0 };
+		int[] mn = {1,1,1,1,1};
+		for (int i=0; i<30;i++) {
+			for (int j=0; j<30;j++) {
+				for (int n=0; n<30;n++) {
+					for (int m=0; m<30;m++) {
+						for (int q=0; q<30;q++) {
+							int [] k = {i, j, n, m, q};
+							if (Arrays.equals(pairSums, allPairSums(k))) {
+								mn= k;
+							}
+						}
+					}
+				}
+			}
+		}
+		return mn;
 	}
-	
+
 	/**
 	 * Compare two arrays for equality.  They must first be
 	 * sorted, so that Arrays.equals can do its thing element

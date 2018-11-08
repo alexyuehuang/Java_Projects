@@ -90,7 +90,7 @@ public class Calculator extends JFrame {
 		setBounds(0, 0, 784, 600);
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		calculator=this;
-
+		
 
 
 

@@ -19,6 +19,19 @@ public class Flower {
 		//
 		// FIXME Your code below here
 		//
+		if(halfWidth<0.005) {
+			return;
+		}
+		else {
+			int r = (int)(Math.random()*9);
+			StdDraw.setPenColor(palette[r]);
+			StdDraw.filledEllipse(x, y, halfWidth, halfHeight);
+			flower(palette, x, y, halfWidth/2 ,halfHeight/2, count);
+			flower(palette, x-halfWidth/2, y, halfWidth/2 ,halfHeight/2, count);
+			flower(palette, x, y-halfHeight/2, halfWidth/2 ,halfHeight/2, count);
+			flower(palette, x, y+halfHeight/2, halfWidth/2 ,halfHeight/2, count);
+			flower(palette, x+halfWidth/2, y, halfWidth/2 ,halfHeight/2, count);
+		}
 	}
 	
 		
