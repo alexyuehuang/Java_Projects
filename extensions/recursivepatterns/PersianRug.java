@@ -25,7 +25,7 @@ public class PersianRug {
 			return;
 		}
 		else {
-			int c = (north+east+west+south+1)%11;
+			int c = (north+east+west+south+1)%10;
 			StdDraw.setPenColor(palette[c]);
 			StdDraw.line(llx+size/2, lly, llx+size/2, lly+size);
 			//StdDraw.setPenColor(palette[north]);
@@ -50,7 +50,7 @@ public class PersianRug {
 		//
 		//  Here is the line to uncomment:
 		//
-		  StdDraw.show(10);   // don't forget to uncomment the other line at the end
+		  //StdDraw.show(10);   // don't forget to uncomment the other line at the end
 		//
 		
 		
@@ -82,7 +82,7 @@ public class PersianRug {
 		// Also uncomment this line when you have things working
 		//   to speed up the drawing:
 		//
-		 StdDraw.show(10);
+		 //StdDraw.show(10);
 		//
 	}
 

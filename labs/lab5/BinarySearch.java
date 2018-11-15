@@ -17,7 +17,7 @@ public class BinarySearch {
 		int c = (a+b)/2;
 		return c;
 	}
-		
+
 	/**
 	 * Searches the specified sorted array for the value specified by key. If the
 	 * array contains key, then it returns an index which holds the value, otherwise
@@ -37,32 +37,32 @@ public class BinarySearch {
 	public static int findIndexInSorted(String[] array, String key) {
 		int a = -1;
 		if (array.length != 0) {
-		String[] b= array;
-		int k =0; 
-		if(Strings.equals(b[b.length/2],key)) {
-			a =b.length/2;
-		}
-		while (!Strings.equals(b[b.length/2],key)&&b.length>1) {
-			if (Strings.isGreaterThan(b[b.length/2], key)) {
-				String[] c = new String[b.length/2];
-				for (int i =0; i<b.length/2; i++) {
-					c[i] = b[i];
-				}
-				b=c;
+			String[] b= array;
+			int k =0; 
+			if(Strings.equals(b[b.length/2],key)) {
+				a =b.length/2;
 			}
-			else {
-				k = k+ (b.length+1)/2;
-				String[] c = new String[b.length/2];
-				for (int i =1; i<=c.length; i++) {
-					c[c.length-i] = b[b.length-i];
+			while (!Strings.equals(b[b.length/2],key)&&b.length>1) {
+				if (Strings.isGreaterThan(b[b.length/2], key)) {
+					String[] c = new String[b.length/2];
+					for (int i =0; i<b.length/2; i++) {
+						c[i] = b[i];
+					}
+					b=c;
 				}
-				b=c;
+				else {
+					k = k+ (b.length+1)/2;
+					String[] c = new String[b.length/2];
+					for (int i =1; i<=c.length; i++) {
+						c[c.length-i] = b[b.length-i];
+					}
+					b=c;
 
+				}
+				if (Strings.equals(b[b.length/2],key)) {
+					a = k+b.length/2;
+				}
 			}
-			if (Strings.equals(b[b.length/2],key)) {
-				a = k+b.length/2;
-			}
-		}
 		}
 		return a;
 	}
