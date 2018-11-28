@@ -10,16 +10,19 @@ import finalproject.OnePlayerBattleship;
  */
 public class FeedOnePlayerBattleship {
 	public static void main(String[] args) {
-		int w = 10;
-		int h = 10;
+		String name = "Ron";
+		int width = 10;
+		int height = 10;
+		int numShips = 5;
+		boolean randomShips = true;
 		List<String> list = new LinkedList<>();
-		list.add("Fred");
-		list.add(Integer.toString(w));
-		list.add(Integer.toString(h));
-		list.add(Integer.toString(5));
-		list.add("true");
-		for (int r = 0; r < h; ++r) {
-			for (int c = 0; c < w; ++c) {
+		list.add(name);
+		list.add(Integer.toString(width));
+		list.add(Integer.toString(height));
+		list.add(Integer.toString(numShips));
+		list.add(Boolean.toString(randomShips));
+		for (int r = 0; r < height; ++r) {
+			for (int c = 0; c < width; ++c) {
 				list.add(Integer.toString(r));
 				list.add(Integer.toString(c));
 			}
