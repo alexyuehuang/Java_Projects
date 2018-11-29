@@ -5,18 +5,23 @@ package conway;
  *
  */
 public class Conway {
+	public int rows, cols;
+	public boolean[][] a;
 
 
 	public Conway(int rows, int cols){
+		this.rows =rows;
+		this.cols = cols;
+		this.a=new boolean [rows][cols];
 	}
 
 
 	public int getRows(){
-		return 0;             // FIXME
+		return this.rows;             // FIXME
 	}
 
 	public int getColumns(){
-		return 0;             // FIXME
+		return this.cols;             // FIXME
 	}
 
 	/**
@@ -26,7 +31,7 @@ public class Conway {
 	 * @param col
 	 */
 	public void setLiveness(boolean b, int row, int col){
-		// FIXME
+		a[row][col]=b;
 	}
 
 
@@ -38,7 +43,12 @@ public class Conway {
 	 *    If row or col is out of bounds, you must return false.
 	 */
 	public boolean isAlive(int row, int col){
-		return false;   // FIXME
+		if(row<0||row>=rows||col<0||col>=cols) {
+			return false;
+		}
+		else{
+			return a[row][col];
+		}
 	}
 
 
@@ -46,7 +56,11 @@ public class Conway {
 	 * Make every cell not alive
 	 */
 	public void clear(){
-		// FIXME
+		for (int i=0; i<rows; i++) {
+			for (int j=0; j<cols; j++) {
+				a[i][j]=false;
+			}
+		}
 	}
 
 
@@ -68,7 +82,18 @@ public class Conway {
 	 * @return the number of living neighbors
 	 */
 	public int countLivingNeighbors(int row, int col){
-		return 0;    // FIXME
+		int k=0;
+		for (int i=Math.max(0, row-1); i<=Math.min(rows-1, row+1);i++) {
+			for (int j=Math.max(0, col-1); j<=Math.min(cols-1, col+1);j++) {
+				if(isAlive(i,j)) {
+					k++;
+				}
+			}
+		}
+		if(isAlive(row,col)) {
+			k--;
+		}
+		return k;
 	}
 
 	/**
@@ -78,7 +103,28 @@ public class Conway {
 	 * 
 	 */
 	public void step(){
-		// FIXME
+		Conway next =new Conway(rows, cols);
+		for (int i=0; i<rows; i++) {
+			for (int j=0; j<cols; j++) {
+				if(isAlive(i,j)) {
+					if(countLivingNeighbors(i,j)==2||countLivingNeighbors(i,j)==3) {
+						next.setLiveness(true, i, j);
+					}
+					else {
+						next.setLiveness(false, i, j);
+					}
+				}
+				else {
+					if(countLivingNeighbors(i,j)==3) {
+						next.setLiveness(true, i, j);
+					}
+					else {
+						next.setLiveness(false, i, j);
+					}
+				}
+			}
+		}
+		this.a=next.a;
 	}
 
 	/**

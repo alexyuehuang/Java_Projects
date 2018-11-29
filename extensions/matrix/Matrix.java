@@ -2,9 +2,9 @@ package matrix;
 
 
 public class Matrix {
-	
+
 	private double[][] values;
-		
+
 	/**
 	 * The Matrix is based on the supplied two-dimensional array of values.
 	 * Be sure to make your own copy of the values, so that changes to the
@@ -12,23 +12,28 @@ public class Matrix {
 	 * @param values
 	 */
 	public Matrix(double[][] in) {
-		values = null;  // FIXME -- make a copy of in
-		                //  this is not the same thing as writing:
-		                //  values = in
+		values=new double[in.length][in[0].length];	//FIXME -- make a copy of in
+          //  this is not the same thing as writing:
+		//  values = in
+		for(int i=0; i<values[0].length; ++i) {
+			for(int j=0; j<values.length; ++j) {
+				values[j][i] = in[j][i];
+			}
+		}
 	}
-	
+
 	public double getValue(int row, int col) {
 		return this.values[row][col];  // Do not change this!
 	}
-	
+
 	public int getNumRows() {
 		return values.length;  // Do not change!
 	}
-	
+
 	public int getNumCols() {
 		return values[0].length; // Do not change!
 	}
-	
+
 	/**
 	 * You must complete this method, or the equals(Object) test will always
 	 *   return false. 
@@ -41,9 +46,22 @@ public class Matrix {
 	 * @return true iff the arrays have the same shape and contents
 	 */
 	private static boolean arraysAreEqual(double[][] one, double[][] two) {
-		return false; // FIXME
+		boolean k=true;
+		if(one.length==two.length&&one[0].length==two[0].length) {
+			for (int i=0; i<one.length; i++) {
+				for (int j=0; j<one[0].length; j++) {
+					if(one[i][j]!=two[i][j]) {
+						k=false;
+					}
+				}
+			}
+		}
+		else {
+			k=false;
+		}
+		return k;
 	}
-	
+
 	/**
 	 * This was generated initially by eclipse, but
 	 *   eclipse does not know how to compare two-dimensional arrays.
@@ -65,11 +83,24 @@ public class Matrix {
 		Matrix other = (Matrix) obj;
 		return arraysAreEqual(this.values, other.values);
 	}
-	
+
 	public Matrix plus(Matrix other) {
-		return null; // FIXME
+		double[][]k=new double[values.length][values[0].length];
+		if(values.length!=other.getNumRows()||values[0].length!=other.getNumCols()) {
+			throw new IllegalArgumentException("not allowed") ;
+		}
+		else {
+			for(int i=0; i<values.length; i++) {
+				for(int j=0; j<values[0].length;j++) {
+					k[i][j]=values[i][j]+other.getValue(i, j);
+				}
+			}
+			return new Matrix(k);
+		}
+
+
 	}
-	
+
 	/**
 	 * Returns a **new Matrix** that is the product of this and the other one.
 	 * Does not change this Matrix at all.
@@ -77,16 +108,37 @@ public class Matrix {
 	 * @return
 	 */
 	public Matrix times(Matrix other) {
-		return null; // FIXME
+		if(other.getNumCols()==values.length) {
+			double[][]k=new double[other.getNumCols()][values.length];
+			for(int i=0; i<k.length; i++) {
+				for(int j=0; j<k[0].length;j++) {
+					int b=0;
+					for (int m=0; m<values[0].length; m++) {
+						b+=values[i][m]*other.getValue(m, j);
+					}
+					k[i][j]=b;
+				}
+			}
+			return new Matrix(k);
+		}
+		else {
+			throw new IllegalArgumentException();
+		}
 	}
-	
+
 	/**
 	 * Returns a **new Matrix** that is the transpose of this one.
 	 * Does not change this Matrix at all.
 	 * @return
 	 */
 	public Matrix transpose() {
-		return null; // FIXME
+		double[][]k=new double[values[0].length][values.length];
+		for(int i=0; i<values.length; i++) {
+			for(int j=0; j<values[0].length;j++) {
+				k[j][i]=values[i][j];
+			}
+		}
+		return new Matrix(k);
 	}
 
 	/**
@@ -95,8 +147,13 @@ public class Matrix {
 	 * @param factor the amount by which to scale each element of row i
 	 */
 	public void scaleRow(int i, double factor) {
-		// FIXME
-		
+		if(i<values.length) {
+		for (int j=0; j<values[0].length; j++) {
+			values[i][j]=values[i][j]*factor;
+		}
+		} else {
+			throw new IllegalArgumentException();
+		}
 	}
 
 	/**
@@ -105,8 +162,14 @@ public class Matrix {
 	 * @param j
 	 */
 	public void addRows(int i, int j) {
-		// FIXME
-		
+		for (int k=0; k<values[0].length; k++) {
+			values[j][k]=values[j][k]+values[i][k];
+		}		
+	}
+	public void minRows(int i, int j) {
+		for (int k=0; k<values[0].length; k++) {
+			values[j][k]=values[j][k]-values[i][k];
+		}		
 	}
 	
 	/**
@@ -115,7 +178,12 @@ public class Matrix {
 	 * @param j
 	 */
 	public void exchangeRows(int i, int j){
-		// FIXME
+		double[]a=new double[values[0].length];
+		for (int k=0; k<values[0].length; k++) {
+			a[k]=values[i][k];
+			values[i][k]=values[j][k];
+			values[j][k]=a[k];
+		}
 	}
 
 	/**
