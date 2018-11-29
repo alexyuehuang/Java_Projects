@@ -1,6 +1,6 @@
 package matrix;
 
-
+ 
 public class Matrix {
 
 	private double[][] values;

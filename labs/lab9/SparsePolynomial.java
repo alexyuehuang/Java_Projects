@@ -16,7 +16,7 @@ public class SparsePolynomial implements Polynomial {
 		super();
 		this.b = d;
 	}
-	
+	 
 	
 	@Override
 	public int hashCode() {
