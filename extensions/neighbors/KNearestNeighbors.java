@@ -30,7 +30,29 @@ public class KNearestNeighbors {
 	 * @return
 	 */
 	public static double predictPrice(double[][] homes, double x, double y, int k) {
-		
-		return 0; //FIXME
+		double sum=0;
+		double []a=new double[homes.length];
+		for (int i=0; i<homes.length; i++) {
+			double diffx=Math.pow((x-homes[i][1]), 2);
+			double diffy=Math.pow((y-homes[i][2]), 2);
+			double dis=Math.sqrt(diffx+diffy);
+			a[i]=dis;
+		}
+		double [] b=new double [k];
+		for (int i=0; i<k; i++) {
+			double nearest =10000000;
+			int where=0;
+			for(int j=0; j<homes.length; j++) {
+				if (a[j]<nearest&&a[j]!=-1) {
+					where=j;
+					nearest=a[j];
+				}
+			}
+			b[i]=where;
+			a[where]=-1;
+			sum=sum+homes[where][0];
+		}
+		sum=sum/k;
+		return sum;
 	}
 }

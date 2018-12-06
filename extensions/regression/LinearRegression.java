@@ -1,5 +1,7 @@
 package regression;
 
+import sedgewick.StdIn;
+
 public class LinearRegression {
 	/**
 	 * These are public class variables and are saved throughout the class
@@ -25,7 +27,27 @@ public class LinearRegression {
 	 * 	if you want to make it easier to work with.
 	 */
 	public static void learn() {
-		//FIXME: Write this method
+		double [] a= StdIn.readDoubles();
+		double [] b1=new double[a.length/2];
+		double [] c=new double[a.length/2];
+		double xy1=0;
+		double x=0;
+		double y=0;
+		double xs=0;
+		for(int i=0; i<b1.length; i++) {
+			b1[i]=a[2*i];
+			c[i]=a[2*i+1];
+			xy1+=b1[i]*c[i];
+			x+=b1[i];
+			y+=c[i];
+			xs+=Math.pow(b1[i],2);
+		}
+		xy1=xy1/(double)b1.length;
+		x=x/(double)b1.length;
+		y=y/(double)b1.length;
+		xs=xs/(double)b1.length;
+		slope=(double)(xy1-x*y)/(xs-Math.pow(x, 2));
+		intercept=y-slope*x;
 	}
 	/**
 	 * You'll need to implement this as well. This method should return the predicted value
@@ -36,6 +58,6 @@ public class LinearRegression {
 	 * @return the estimated price of the house
 	 */
 	public static double predictPrice(double squareFeet) {
-		return 0; //FIXME: return the right price
+		return intercept+squareFeet*slope;
 	}
 }

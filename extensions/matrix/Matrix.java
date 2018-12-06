@@ -168,7 +168,7 @@ public class Matrix {
 	}
 	public void minRows(int i, int j) {
 		for (int k=0; k<values[0].length; k++) {
-			values[j][k]=values[j][k]-values[i][k];
+			values[j][k]=-values[j][k]+values[i][k];
 		}		
 	}
 	
