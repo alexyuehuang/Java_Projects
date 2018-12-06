@@ -11,7 +11,7 @@ public class KNearestNeighbors {
 	 * This array is formatted as follows:
 	 * 				   {{price_0, x_0, y_0}
 	 * 					{price_1, x_1, y_1}
-	 * 						    ...
+	 * 			 			    ...
 	 * 					{price_n, x_n, y_n}}
 	 * price is the selling price of the house, x is its longitude and y is its latitude.
 	 * Therefore, you would call house 0's latitude by writing homes[0][2].

@@ -37,7 +37,7 @@ public class ListNode<T> {
 		}
 	}
 
-	
+	 
 	public static void main(String[] args) {
 		ListNode<Integer> head = new ListNode<Integer>(131);
 		head.next              = new ListNode<Integer>(132);

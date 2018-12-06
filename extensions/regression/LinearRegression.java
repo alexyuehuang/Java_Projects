@@ -12,7 +12,7 @@ public class LinearRegression {
 	 *  when you learn about objects in Module 7.
 	 * These will be initialized as 0, but you will change them in your code.
 	 */
-	public static double slope = 0;
+	public static double slope = 0; 
 	public static double intercept = 0;
 	
 	/**

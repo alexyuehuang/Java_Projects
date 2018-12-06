@@ -13,7 +13,7 @@ public class SadCycler{
 //		super();
 //		this.num = num;
 //	}
-
+ 
 	public static Set<Long> findCycle(int base, long n){
 		int num=base;
 		Set<Long>a= new HashSet<Long>();

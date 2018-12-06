@@ -10,7 +10,7 @@ public class Apartment {
 	 * 
 	 * @param values the array containing the random doubles
 	 * @param k the integer representing the stopping point
-	 * @return
+	 * @return 
 	 */
 	public static double findBestValueAfterStopAtK(double[] values, int k) {
 		double best=0;
