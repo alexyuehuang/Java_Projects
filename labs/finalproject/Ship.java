@@ -1,5 +1,7 @@
 package finalproject;
 
+import java.util.Arrays;
+
 import cse131.NotYetImplementedException;
 
 /**
@@ -7,7 +9,9 @@ import cse131.NotYetImplementedException;
  * @version 11/18/18
  */
 public class Ship {
-	
+	private final int topLeftX, topLeftY, length;
+	private final boolean isHorizontal;
+	public boolean[] hit;
 	/**
 	 * Create an instance of the ship class, recording all necessary information into
 	 * any instance variables you choose to create
@@ -18,7 +22,14 @@ public class Ship {
 	 * @param isHorizontal if true, the ship is placed horizontally, else the ship is placed vertically
 	 */
 	public Ship(int topLeftX, int topLeftY, int length, boolean isHorizontal) {
-		throw new NotYetImplementedException("Delete this line and implement this method");
+		this.topLeftX=topLeftX;
+		this.topLeftY=topLeftY;
+		this.length=length;
+		this.isHorizontal=isHorizontal;
+		this.hit=new boolean[length];
+		for(int i=0; i<length; i++) {
+			hit[i]=false;
+		}
 	}
 	
 	/**
@@ -28,7 +39,13 @@ public class Ship {
 	 * @return true if the ship has been sunk
 	 */
 	public boolean isSunk() {
-		throw new NotYetImplementedException("Delete this line and implement this method");
+		boolean a=true;
+		for(int i=0; i<length; i++) {
+			if(hit[i]==false) {
+				a=false;
+			}
+		}
+		return a;
 	}
 	
 	/**
@@ -40,7 +57,137 @@ public class Ship {
 	 * @return true if this ship occupies that spot (hit), false otherwise (miss)
 	 */
 	public boolean isHit(int x, int y) {
-		throw new NotYetImplementedException("Delete this line and implement this method");
+		if(this.topLeftX==x||this.topLeftY==y) {
+			if(this.isHorizontal) {
+				if(this.topLeftY==y) {
+					if(x-this.topLeftX>=0&&x-this.topLeftX<length) {
+						hit[x-this.topLeftX]=true;
+						return true;
+						
+					}
+					else {
+						return false;
+					}
+				}
+				else {
+					return false;
+				}
+			}
+			else {
+				if(this.topLeftX==x) {
+					if(y-this.topLeftY>=0&&y-this.topLeftY<length) {
+						hit[y-this.topLeftY]=true;
+						return true;
+					}
+					else {
+						return false;
+					}
+				}
+				else {
+					return false;
+				}
+			}
+		}
+		else {
+			return false;
+		}
+	}
+	public boolean isOK(int x, int y) {
+		if(this.topLeftX==x||this.topLeftY==y) {
+			if(this.isHorizontal) {
+				if(this.topLeftY==y) {
+					if(x-this.topLeftX>=0&&x-this.topLeftX<length) {
+						return true;
+						
+					}
+					else {
+						return false;
+					}
+				}
+				else {
+					return false;
+				}
+			}
+			else {
+				if(this.topLeftX==x) {
+					if(y-this.topLeftY>=0&&y-this.topLeftY<length) {
+						return true;
+					}
+					else {
+						return false;
+					}
+				}
+				else {
+					return false;
+				}
+			}
+		}
+		else {
+			return false;
+		}
+	}
+	public boolean isHorizontal() {
+		return this.isHorizontal;
+	}
+
+	public boolean[] getHit() {
+		return hit;
+	}
+
+	public void setHit(boolean[] hit) {
+		this.hit = hit;
+	}
+
+	public int getTopLeftX() {
+		return topLeftX;
+	}
+
+	public int getTopLeftY() {
+		return topLeftY;
+	}
+
+	public int getLength() {
+		return length;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + Arrays.hashCode(hit);
+		result = prime * result + (isHorizontal ? 1231 : 1237);
+		result = prime * result + length;
+		result = prime * result + topLeftX;
+		result = prime * result + topLeftY;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Ship other = (Ship) obj;
+		if (!Arrays.equals(hit, other.hit))
+			return false;
+		if (isHorizontal != other.isHorizontal)
+			return false;
+		if (length != other.length)
+			return false;
+		if (topLeftX != other.topLeftX)
+			return false;
+		if (topLeftY != other.topLeftY)
+			return false;
+		return true;
+	}
+
+	public String toString() {
+		String a="";
+		a=a+this.topLeftX+this.topLeftY+this.isHorizontal+this.length+this.isSunk();
+		return a;
 	}
 	
 }

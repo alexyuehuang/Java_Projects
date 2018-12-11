@@ -22,7 +22,11 @@ public class SingleTone {
 	 * @return the Samples corresponding to the desired sine wave
 	 */
 	public Samples getSamples(double amplitude, double duration) {
-		return null;  // FIXME
+		double [] a=new double [(int)(duration*StdAudio.SAMPLE_RATE)];
+		for (int i=0; i<a.length; i++) {
+			a[i] = amplitude*Math.sin(((double)i)*frequency);
+		}
+		return new Samples(a);
 	}
 	
 	/**
@@ -41,7 +45,7 @@ public class SingleTone {
 	 * @return a SingleTone with this frequency multiplied by the specified factor
 	 */
 	public SingleTone getOvertone(double mpy) {
-		return null;  // FIXME
+		return new SingleTone((double)((double)mpy*(double)frequency));
 	}
 	
 	/**

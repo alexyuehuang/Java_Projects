@@ -27,7 +27,14 @@ public class ListItem {
 	 * @return
 	 */
 	public ListItem duplicate() {
-		return null; // FIXME
+		ListItem a = new ListItem(this.number, this.next);
+		if(next==null) {
+			return a;
+		}
+		else {
+			a.next=this.next.duplicate();
+			return a;
+		}
 	}
 
 	/**
@@ -37,7 +44,12 @@ public class ListItem {
 	 * @return
 	 */
 	public int length() {
-		return 0; // FIXME
+		if(this.next==null) {
+			return 1;
+		}
+		else {
+			return 1+this.next.length();
+		}
 	}
 
 	/**
@@ -50,7 +62,83 @@ public class ListItem {
 	 */
 
 	public ListItem stretch(int n) {
-		return null;  // FIXME
+//		ListItem a = new ListItem(this.number, this.next);
+		ListItem array = new ListItem(this.number, null);
+		ListItem pointer = array;
+//		System.out.println(array);
+//		System.out.println(pointer);
+//		for(int i=0; i<n-1; i++) {
+//			pointer.next = new ListItem(this.number, null);
+//			pointer = pointer.next;
+//			System.out.println(pointer);
+//			System.out.println(array);
+//		}
+//		System.out.println("k");
+//		int g=0;
+		for(ListItem p=this; p!=null; p=p.next) {
+			for(int i=0; i<n; i++) {
+				pointer.next = new ListItem(p.number, null);
+				pointer = pointer.next;
+//				System.out.println(pointer);
+//				System.out.println(array);
+				
+			}
+			//System.out.println("K");
+//			if(p.next.next==null) {
+//				for(int i=0; i<n; i++) {
+//					g=6;
+//					System.out.println("k");
+//					pointer.next = new ListItem(g, null);
+//					pointer = pointer.next;
+//					System.out.println(pointer);
+//					System.out.println(array);
+//				}
+//			}
+	}
+//			//			while(p!=null&&g==0) {
+//			//				if(p.next==null) {
+//			//					p.next=a;
+//			//					g=1;
+//			//				}
+//			//				p=p.next;
+//			//			}
+//			//			if(array.next==null) {
+//			//				array.next=a;
+//			//			}
+//		}
+		//		System.out.println(array);
+		//		g=0;
+		//		for(ListItem p=this.next; p!=null; p=p.next) {
+		//			a=p;
+		//			for(int i=0; i<n; i++) {
+		//				ListItem q=array.next;
+		//				while(q!=null&&g==0 ) {
+		//					if(q.next==null) {
+		//						q.next=a;
+		//						g=1;
+		//					}
+		//					q=q.next;
+		//				}
+		//				if(array.next==null) {
+		//					array.next=a;
+		//				}
+		//			}
+		//		}
+		return array.next;
+		//		while(this.next!=null) {
+		//			for(int i=0; i<n; i++) {
+		//				
+		////				for(ListItem p=this.next; p.next!=null; p=p.next) {
+		////					
+		////				}
+		//				this.next=this.next.next;
+		//			}
+		//		}
+		//			//a.next=this.next.stretch(n);
+		//			
+		////			for(int i=0; i<n; i++) {
+		//				
+
 	}
 
 	/**
@@ -63,7 +151,16 @@ public class ListItem {
 	 */
 
 	public ListItem find(int n) {
-		return null;  // FIXME
+		ListItem a= new ListItem(this.number, this.next);
+		if(this.number==n) {
+			return a;
+		}
+		if(this.next==null) {
+			return null;
+		}
+		else {
+			return this.next.find(n);
+		}
 	}
 
 	/**
@@ -75,7 +172,12 @@ public class ListItem {
 	 */
 
 	public int max() {
-		return 0; // FIXME
+		if(this.next==null) {
+			return this.number;
+		}
+		else {
+			return Math.max(this.number, this.next.max());
+		}
 	}
 
 	/**
@@ -85,7 +187,25 @@ public class ListItem {
 	 * @return
 	 */
 	public static ListItem evenElements(ListItem ls) {
-		return null;  // FIXME
+		if(ls==null) {
+			return null;
+		}
+		if(ls.next==null) {
+			if(ls.number%2==0) {
+				return ls;
+			}
+			else {
+				return null;
+			}
+		}
+		else {
+			if(ls.number%2==0) {
+				return new ListItem(ls.number, evenElements(ls.next));
+			}
+			else {
+				return evenElements(ls.next);
+			}
+		}
 	}	
 
 

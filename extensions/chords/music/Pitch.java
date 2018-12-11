@@ -30,6 +30,9 @@ public class Pitch {
 	public Pitch getChromaticRelative(int diff) {
 		return new Pitch(p+diff);
 	}
+	public int getPitch() {
+		return p;
+	}
 	
 	/**
 	 * Uses equal temperament so that a Sedgewich pitch of integer value p has

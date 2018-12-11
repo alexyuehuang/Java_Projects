@@ -52,10 +52,10 @@ public class SadCycler{
 	}
 
 	public static void main(String[] args){
-		int num=7;
+		int num=103;
 		Set<Long> a =findCycle(num, 10);
 		Object[] b=a.toArray();
-		for(int i=0; i<1; i++) {
+		for(int i=0; i<b.length; i++) {
 			System.out.println(b[i]);
 		}
 	}

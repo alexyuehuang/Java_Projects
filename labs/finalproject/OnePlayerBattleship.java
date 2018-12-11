@@ -40,17 +40,41 @@ public class OnePlayerBattleship implements Battleship {
 	 * @param playerName the name of the Player who will be playing the game
 	 */
 	public OnePlayerBattleship(int width, int height, boolean randomShips, int numShips, String playerName, ArgsProcessor ap) {
-		p1 = new HumanPlayer(playerName, width, height, ap); // DON'T CHANGE THIS
+		p1 = new HumanPlayer(playerName,  height,width, ap); // DON'T CHANGE THIS
+		if(randomShips) {
+			for(int i=0; i<numShips; i++) {
+				//int l=ap.nextInt("length?");
+				p1.addRandomShip(4);
+			}
+		}
+		else {
+			for(int i=0; i<numShips; i++) {
+				//int l=ap.nextInt("length?");
+				p1.decideShipPlacement(4);
+			}
+		}
 	}
 
 	@Override
 	public Player play() {
-		throw new NotYetImplementedException("Delete this line and implement this method");
+		while(!turn(p1)) {
+			
+		}
+		return p1;
 	}
 
 	@Override
 	public boolean turn(Player p) {
-		throw new NotYetImplementedException("Delete this line and implement this method");
+		int []a =p.getTargetLocation();
+		boolean k=p.respondToFire(a[0], a[1]);
+		p.recordHitOrMiss(a[0], a[1], k);
+		if(k) {
+			System.out.println("You sunk my battleship!");
+		}
+		System.out.println();
+		p.printRadar();
+		boolean sd= p.numShipsStillAfloat()==0;
+		return sd;
 	}
 	
 	/**
